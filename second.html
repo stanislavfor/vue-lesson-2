@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список товаров</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            max-width: 1000px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            cursor: pointer;
+        }
+
+        button {
+            background-color: beige;
+            height: 30px;
+            margin: 10px 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Список товаров</h1>
+        <div>
+            <button @click="sortByPriceAsc">Сортировать по цене (по возрастанию)</button>
+            <button @click="sortByPriceDesc">Сортировать по цене (по убыванию)</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Цена</th>
+                    <th>ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(product, index) in sortedProducts" :key="index">
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price }} ₽</td>
+                    <td>{{ product.id }}</td>
+                </tr>
+            </tbody>
+            <thead>
+                <th></th>
+                <th></th>
+                <th></th>
+            </thead>
+        </table>
+        <div>
+            <button @click="sortById">Сортировать по ID</button>
+        </div>
+        <!--
+        <ul>
+    <li v-for="product in sortedProducts" :key="product.id"> {{ product.id }} : {{ product.name }} -- {{ product.price }} ₽ </li>
+</ul>
+-->
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                products: [{
+                    id: 1,
+                    name: 'Товар 1',
+                    price: 100
+                }, {
+                    id: 2,
+                    name: 'Товар 2',
+                    price: 200
+                }, {
+                    id: 3,
+                    name: 'Товар 3',
+                    price: 150
+                }, {
+                    id: 4,
+                    name: 'Товар 4',
+                    price: 50
+                }, {
+                    id: 5,
+                    name: 'Товар 5',
+                    price: 250
+                }, {
+                    id: 6,
+                    name: 'Товар 6',
+                    price: 300
+                }, {
+                    id: 7,
+                    name: 'Товар 7',
+                    price: 120
+                }, {
+                    id: 8,
+                    name: 'Товар 8',
+                    price: 180
+                }, {
+                    id: 9,
+                    name: 'Товар 9',
+                    price: 90
+                }, {
+                    id: 10,
+                    name: 'Товар 10',
+                    price: 70
+                }, {
+                    id: 11,
+                    name: 'Товар 11',
+                    price: 220
+                }, {
+                    id: 12,
+                    name: 'Товар 12',
+                    price: 130
+                }, {
+                    id: 13,
+                    name: 'Товар 13',
+                    price: 170
+                }, {
+                    id: 14,
+                    name: 'Товар 14',
+                    price: 80
+                }, {
+                    id: 15,
+                    name: 'Товар 15',
+                    price: 60
+                }, {
+                    id: 16,
+                    name: 'Товар 16',
+                    price: 210
+                }],
+                sortType: null
+            },
+            computed: {
+                sortedProducts() {
+                    if (this.sortType === 'priceAsc') {
+                        return this.products.sort((a, b) => a.price - b.price);
+                    } else if (this.sortType === 'priceDesc') {
+                        return this.products.sort((a, b) => b.price - a.price);
+                    } else if (this.sortType === 'id') {
+                        return this.products.sort((a, b) => a.id - b.id);
+                    } else {
+                        return this.products;
+                    }
+                }
+            },
+            methods: {
+                sortByPriceAsc() {
+                    this.sortType = 'priceAsc';
+                },
+                sortByPriceDesc() {
+                    this.sortType = 'priceDesc';
+                },
+                sortById() {
+                    this.sortType = 'id';
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>
