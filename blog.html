@@ -37,7 +37,7 @@
 </head>
 
 <body>
-    <div class="wrapper">
+    <div class="wrapper" id="app">
         <header class="header" id="blog-section">
             <div class="container">
                 <div class="header__inner">
@@ -87,36 +87,17 @@
                         <br> на читабельный контент страницы.
                     </p>
                     <div class="blogs__inner">
-                        <div class="blogs__box">
-                            <div class="blogs__box-top">
-                                <picture> <img class="blogs__box-img" src="images/blog-1.jpg" alt=""> </picture> <span class="blogs__box-details">Дизайн Кухни</span>
-                            </div>
-                            <h4 class="blogs__box-title">Создадим лучший макет перепланировки</h4>
-                            <div class="blogs__box-bottom">
-                                <time datetime="2021-11-23" class="blogs__box-date">26 Декабря, 2024</time>
-                                <a class="blogs__box-btn" href="#"></a>
-                            </div>
-                        </div>
-                        <div class="blogs__box">
-                            <div class="blogs__box-top">
-                                <picture> <img class="blogs__box-img" src="images/blog-2.jpg" alt=""> </picture> <span class="blogs__box-details">Дизайн для Жизни</span>
-                            </div>
-                            <h4 class="blogs__box-title">Лучшие интерьерные идеи по низкой цене</h4>
-                            <div class="blogs__box-bottom">
-                                <time datetime="2021-11-23" class="blogs__box-date">22 Декабря, 2024</time>
-                                <a class="blogs__box-btn" href="#"></a>
-                            </div>
-                        </div>
-                        <div class="blogs__box">
+                        <div class="blogs__box" v-for="blog in blogs" :key="blog.id">
                             <div class="blogs__box-top">
                                 <picture>
-                                    <source srcset="images/blog-3.jpg" type="image"><img class="blogs__box-img" src="images/blog-3.jpg" alt="">
-                                </picture> <span class="blogs__box-details">Дизайн Интерьера</span>
+                                    <img class="blogs__box-img" :src="blog.image" :alt="blog.title">
+                                </picture>
+                                <span class="blogs__box-details">{{ blog.category }}</span>
                             </div>
-                            <h4 class="blogs__box-title">Лучшие интерьерные решения для офисов</h4>
+                            <h4 class="blogs__box-title">{{ blog.title }}</h4>
                             <div class="blogs__box-bottom">
-                                <time datetime="2021-11-23" class="blogs__box-date">25 Декабря,2024</time>
-                                <a class="blogs__box-btn" href="#"></a>
+                                <time :datetime="blog.date" class="blogs__box-date">{{ blog.dateFormatted }}</time>
+                                <a class="blogs__box-btn" :href="blog.link"></a>
                             </div>
                         </div>
                     </div>
@@ -177,6 +158,43 @@
             </div>
         </footer>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                blogs: [
+                    {
+                        id: 1,
+                        image: 'images/blog-1.jpg',
+                        category: 'Дизайн Кухни',
+                        title: 'Создадим лучший макет перепланировки',
+                        date: '2021-11-23',
+                        dateFormatted: '26 Декабря, 2024',
+                        link: '#'
+                    },
+                    {
+                        id: 2,
+                        image: 'images/blog-2.jpg',
+                        category: 'Дизайн для Жизни',
+                        title: 'Лучшие интерьерные идеи по низкой цене',
+                        date: '2021-11-23',
+                        dateFormatted: '22 Декабря, 2024',
+                        link: '#'
+                    },
+                    {
+                        id: 3,
+                        image: 'images/blog-3.jpg',
+                        category: 'Дизайн Интерьера',
+                        title: 'Лучшие интерьерные решения для офисов',
+                        date: '2021-11-23',
+                        dateFormatted: '25 Декабря, 2024',
+                        link: '#'
+                    }
+                ]
+            }
+        });
+    </script>
 </body>
 
 </html>
