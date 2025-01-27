@@ -89,10 +89,7 @@
                     <div class="blogs__inner">
                         <div class="blogs__box" v-for="blog in blogs" :key="blog.id">
                             <div class="blogs__box-top">
-                                <picture>
-                                    <img class="blogs__box-img" :src="blog.image" :alt="blog.title">
-                                </picture>
-                                <span class="blogs__box-details">{{ blog.category }}</span>
+                                <picture> <img class="blogs__box-img" :src="blog.image" :alt="blog.title"> </picture> <span class="blogs__box-details">{{ blog.category }}</span>
                             </div>
                             <h4 class="blogs__box-title">{{ blog.title }}</h4>
                             <div class="blogs__box-bottom">
@@ -112,7 +109,7 @@
                         <br>
                         <br>
                         <br>
-                        <p class="footer__logo-text">
+                        <p class="footer__logo-text"></p>
                         <div class="header__list-item"> <a class="header__list-link" href="index.html#main-section">Домой</a> </div>
                         <br>
                         <div class="header__list-item"> <a class="header__list-link" href="index.html#project-section">Проекты</a> </div>
@@ -163,37 +160,34 @@
         new Vue({
             el: '#app',
             data: {
-                blogs: [
-                    {
-                        id: 1,
-                        image: 'images/blog-1.jpg',
-                        category: 'Дизайн Кухни',
-                        title: 'Создадим лучший макет перепланировки',
-                        date: '2021-11-23',
-                        dateFormatted: '26 Декабря, 2024',
-                        link: '#'
-                    },
-                    {
-                        id: 2,
-                        image: 'images/blog-2.jpg',
-                        category: 'Дизайн для Жизни',
-                        title: 'Лучшие интерьерные идеи по низкой цене',
-                        date: '2021-11-23',
-                        dateFormatted: '22 Декабря, 2024',
-                        link: '#'
-                    },
-                    {
-                        id: 3,
-                        image: 'images/blog-3.jpg',
-                        category: 'Дизайн Интерьера',
-                        title: 'Лучшие интерьерные решения для офисов',
-                        date: '2021-11-23',
-                        dateFormatted: '25 Декабря, 2024',
-                        link: '#'
-                    }
-                ]
+                blogs: [{
+                    id: 1,
+                    image: 'images/blog-1.jpg',
+                    category: 'Дизайн Кухни',
+                    title: 'Создадим лучший макет перепланировки',
+                    date: '2021-11-23',
+                    dateFormatted: '26 Декабря, 2024',
+                    link: '#'
+                }, {
+                    id: 2,
+                    image: 'images/blog-2.jpg',
+                    category: 'Дизайн для Жизни',
+                    title: 'Лучшие интерьерные идеи по низкой цене',
+                    date: '2021-11-23',
+                    dateFormatted: '22 Декабря, 2024',
+                    link: '#'
+                }, {
+                    id: 3,
+                    image: 'images/blog-3.jpg',
+                    category: 'Дизайн Интерьера',
+                    title: 'Лучшие интерьерные решения для офисов',
+                    date: '2021-11-23',
+                    dateFormatted: '25 Декабря, 2024',
+                    link: '#'
+                }]
             }
         });
+
     </script>
 </body>
 
